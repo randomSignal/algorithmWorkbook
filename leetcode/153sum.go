@@ -57,8 +57,9 @@ func ThreeSum(nums []int) [][]int {
 		}
 	}
 
+	sort.Ints(list)
 	resMap := make(map[string]bool)
-	for i := 0; i < len(list); i++ {
+	for i := 0; i < len(list) && list[i] < 0; i++ {
 		for j := i + 1; j < len(list); j++ {
 			value := -(list[i] + list[j])
 			if value == list[i] || value == list[j] {
@@ -77,22 +78,5 @@ func ThreeSum(nums []int) [][]int {
 		}
 	}
 
-	//resMap := make(map[string]bool)
-	//for i := 0; i < len(nums); i++ {
-	//	for j := i + 1; j < len(nums); j++ {
-	//		for k := j + 1; k < len(nums); k++ {
-	//			if nums[i]+nums[j]+nums[k] != 0 {
-	//				continue
-	//			}
-	//			item := []int{nums[i], nums[j], nums[k]}
-	//			sort.Ints(item)
-	//			mapKey := strconv.Itoa(item[0]) + strconv.Itoa(item[1]) + strconv.Itoa(item[2])
-	//			if _, ok := resMap[mapKey]; !ok {
-	//				resMap[mapKey] = true
-	//				res = append(res, item)
-	//			}
-	//		}
-	//	}
-	//}
 	return res
 }
