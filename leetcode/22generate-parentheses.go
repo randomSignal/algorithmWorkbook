@@ -23,7 +23,7 @@ func InsertChar(args string, offset int, char string) string {
 	return args[:offset] + char + args[offset:]
 }
 
-func RemoveDuplicates(args []string) []string {
+func RemoveDuplicatesItem(args []string) []string {
 	mapData := map[string]bool{}
 	for _, v := range args {
 		mapData[v] = true
@@ -51,7 +51,7 @@ func GenerateParenthesisByString(list []string, n int) []string {
 			}
 		}
 	}
-	tmp = RemoveDuplicates(tmp)
+	tmp = RemoveDuplicatesItem(tmp)
 	return GenerateParenthesisByString(tmp, n-1)
 }
 
