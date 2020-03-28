@@ -47,10 +47,7 @@ func UniquePaths(m int, n int) int {
 
 	var a [][]int
 	for i := 0; i < m; i++ {
-		var list []int
-		for j := 0; j <= n; j++ {
-			list = append(list, 0)
-		}
+		list := make([]int, n)
 		a = append(a, list)
 	}
 
