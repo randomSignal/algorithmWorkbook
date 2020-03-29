@@ -49,3 +49,62 @@ func MaxSubArray(nums []int) int {
 
 	return maxNum
 }
+
+func MaxSubArray2(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+	if len(nums) == 1 {
+		return nums[0]
+	}
+
+	negative := 0
+	res := make([]int, len(nums))
+	if nums[0] < 0 {
+		negative = nums[0]
+	}
+	res[0] = nums[0]
+
+	for i := 1; i < len(nums); i++ {
+		if nums[i] >= 0 {
+			if nums[i-1] >= 0 {
+				res[i] = res[i-1] + nums[i]
+				negative = 0
+			} else {
+				if res[i-1] >= 0 {
+					a := nums[i]
+					b := nums[i] + res[i-1] + negative
+					if a >= b {
+						res[i] = a
+						negative = 0
+					} else {
+						res[i] = b
+						negative = 0
+					}
+				} else {
+					res[i] = nums[i]
+					negative = 0
+				}
+			}
+		}
+
+		if nums[i] < 0 {
+			if nums[i-1] >= 0 {
+				res[i] = res[i-1]
+				negative = res[i]
+			} else {
+				a := nums[i]
+				b := nums[i] + negative + res[i-1]
+				if a >= b {
+					res[i] = a
+					negative = a
+				} else {
+					res[i] = b
+					negative = negative + a
+				}
+			}
+		}
+	}
+
+	return nums[len(nums)-1]
+}

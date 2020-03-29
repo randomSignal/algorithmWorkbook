@@ -38,7 +38,7 @@ func TestMaxSubArray(t *testing.T) {
 		{Args: []int{-2, 1}, Result: 1},
 	}
 	for i := 0; i < len(sampleList); i++ {
-		res = leetcode.MaxSubArray(sampleList[i].Args)
+		res = leetcode.MaxSubArray2(sampleList[i].Args)
 		require.Equal(t, sampleList[i].Result, res)
 	}
 }
